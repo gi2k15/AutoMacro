@@ -12,7 +12,4 @@ move-folders:
     Libs/Ace3/AceLocale-3.0: Libs/AceLocale-3.0
 
 ignore:
-    - Libs/Ace3 
-
-optional-dependencies:
-    - Ace3
+    - Libs/Ace3
