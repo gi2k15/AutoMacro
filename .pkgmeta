@@ -1,15 +1,3 @@
-package-as: AutoMacro
-
 externals:
-    Libs/LibStub:
-        url: svn://repos.curseforge.com/wow/libstub/trunk
-        tag: latest
-    Libs/Ace3:
-        url: svn://repos.curseforge.com/wow/ace3/trunk
-        tag: latest
-
-move-folders:
-    Libs/Ace3/AceLocale-3.0: Libs/AceLocale-3.0
-
-ignore:
-    - Libs/Ace3
+    Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
+    Libs/AceLocale-3.0: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
