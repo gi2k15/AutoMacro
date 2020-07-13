@@ -13,5 +13,6 @@ Libs\AceLocale-3.0\AceLocale-3.0.xml
 
 Locales\enUS.lua
 Locales\ptBR.lua
+Locales\ruRU.lua
 
 core.lua
