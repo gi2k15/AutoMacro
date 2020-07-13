@@ -1,0 +1,17 @@
+## Interface: 80300
+## Title: AutoMacro
+## Author: gi2k15
+## Notes: Creates spell macros with a single click.
+## Notes-ptBR: Cria macros de magia com apenas um clique.
+## Notes-ruRU: Создает макросы заклинаний одним щелчком мыши.
+## Version: @project-version@
+## SavedVariables: AutoMacroDB
+## OptionalDeps: Ace3
+
+Libs\LibStub\LibStub.lua
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+
+Locales\enUS.lua
+Locales\ptBR.lua
+
+core.lua
