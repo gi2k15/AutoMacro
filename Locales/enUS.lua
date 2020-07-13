@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("AutoMacro", "enUS", true)
 
 L = L or {}
---@localization(locale="enUS", format="lua_additive_table", same-key-is-true=true)@
+--@localization(locale="enUS", format="lua__additive_table", same-key-is-true=true)@
 --@do-not-package@
 L["AutoMacro configuration"] = true
 L["Cannot create macros while in combat."] = true
