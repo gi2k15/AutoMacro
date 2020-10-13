@@ -26,7 +26,7 @@ tinsert(UISpecialFrames, config.main:GetName())
 config.main:Hide()
 
 config.title = config.main:CreateFontString("AutoMacroConfigTitle", "OVERLAY", "GameFontNormal")
-config.title:SetPoint("TOP", 0, 0)
+config.title:SetPoint("TOP")
 config.title:SetText(L["AutoMacro configuration"])
 
 config.desc = config.main:CreateFontString("AutoMacroConfigDesc", "OVERLAY", "GameFontWhiteSmall")
@@ -124,12 +124,13 @@ for i = 1, 12 do
 		if (not InCombatLockdown()) then
 			local slot = SpellBook_GetSpellBookSlot(spell)
 			local _, id = GetSpellBookItemInfo(slot, "spell")
-			local name, _, icon = GetSpellInfo(id)
-			local macro = gsub(AutoMacroDB.macro, "<spell>", name)
+			local sname, _, icon = GetSpellInfo(id)
+			local macro = gsub(AutoMacroDB.macro, "<spell>", sname)
+			local name = strsub(sname, 1, 11) .. " [AM]"
 			local exists = GetMacroIndexByName(name)
 			local index = nil
 			if (exists ~= 0) and (config.mreplace:GetChecked() == false) then
-				DEFAULT_CHAT_FRAME:AddMessage(addonname .. string.format(L["There is already a macro named %s."], name))
+				print(addonname .. string.format(L["There is already a macro named %s."], name))
 			else
 				local saveWhere = nil
 				if (not config.general:GetChecked()) then
@@ -139,7 +140,7 @@ for i = 1, 12 do
 				index = CreateMacro(name, icon, macro, saveWhere, 1)
 			end
 			if (index) then 
-				DEFAULT_CHAT_FRAME:AddMessage(addonname .. L["Macro created successfully!"])
+				print(addonname .. L["Macro created successfully!"])
 				if (_G["MacroFrame"] ~= nil) and (MacroFrame:IsShown()) then
 					MacroFrame:Hide()
 					MacroFrame:Show()
@@ -147,7 +148,7 @@ for i = 1, 12 do
 				PickupMacro(index)
 			end
 		else
-			DEFAULT_CHAT_FRAME:AddMessage(addonname .. L["Cannot create macros while in combat."])
+			print(addonname .. L["Cannot create macros while in combat."])
 		end
 	end)
 	-- The frames should not be displayed if it's an empty slot.
