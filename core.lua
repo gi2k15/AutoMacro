@@ -186,6 +186,13 @@ local function ReopenFrames()
 end
 SpellBookPrevPageButton:HookScript("OnClick", ReopenFrames)
 SpellBookNextPageButton:HookScript("OnClick", ReopenFrames)
+-- If you change tabs, refresh.
+SpellBookSkillLineTab1:HookScript("OnClick", ReopenFrames)
+SpellBookSkillLineTab2:HookScript("OnClick", ReopenFrames)
+SpellBookSkillLineTab3:HookScript("OnClick", ReopenFrames)
+SpellBookSkillLineTab4:HookScript("OnClick", ReopenFrames)
+SpellBookSkillLineTab5:HookScript("OnClick", ReopenFrames)
+SpellBookSkillLineTab6:HookScript("OnClick", ReopenFrames)
 
 
 -- ON/OFF Button
