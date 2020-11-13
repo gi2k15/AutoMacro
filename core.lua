@@ -35,7 +35,7 @@ config.desc:SetWidth(config.main:GetWidth() - 20)
 config.desc:SetJustifyH("LEFT")
 config.desc:SetText(format(L["Type below the macro you want to create with AutoMacro. Use %s where the name of the spell clicked should be replaced."],"|c00FFFF00<spell>|r"))
 
-config.mreplace = CreateFrame("CheckButton", "AutoMacroOverwriteMacro", config.main, "ChatConfigCheckButtonTemplate")
+config.mreplace = CreateFrame("CheckButton", "AutoMacroOverwriteMacro", config.main, "UICheckButtonTemplate")
 config.mreplace.text = _G[config.mreplace:GetName() .. "Text"]
 config.mreplace:SetPoint("TOPLEFT", config.desc, "BOTTOMLEFT", -5, -5)
 config.mreplace:SetSize(20,20)
@@ -46,7 +46,7 @@ config.mreplace:SetScript("OnClick", function(self)
 	AutoMacroDB.mreplace = self:GetChecked()
 end)
 
-config.general = CreateFrame("CheckButton", "AutoMacroGeneral", config.main, "ChatConfigCheckButtonTemplate")
+config.general = CreateFrame("CheckButton", "AutoMacroGeneral", config.main, "UICheckButtonTemplate")
 config.general.text = _G[config.general:GetName() .. "Text"]
 config.general:SetPoint("TOPLEFT", config.mreplace, "BOTTOMLEFT")
 config.general:SetSize(20,20)
@@ -158,7 +158,8 @@ for i = 1, 12 do
 			frames[i]:Hide()
 		else
 			local _, id = GetSpellBookItemInfo(slot, "spell")
-			if not IsSpellKnown(id) then
+			-- Hide frame if spell is passive or unknown. 
+			if not IsSpellKnown(id) or IsPassiveSpell(id) then
 				frames[i]:Hide()
 			else
 				-- Tooltips on the frames.
