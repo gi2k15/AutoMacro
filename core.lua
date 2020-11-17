@@ -86,17 +86,16 @@ end)
 config.main:RegisterEvent("ADDON_LOADED")
 config.main:SetScript("OnEvent", function(self, event, ...)
     if (event == "ADDON_LOADED") and (... == "AutoMacro") then
+        local defaults = {
+            __index = {
+                macro = [[#showtooltip
+/use [@mouseover,exists][] <spell>]],
+                mreplace = false,
+                general = false
+            }
+        }
         -- Defaults
-        AutoMacroDB = AutoMacroDB or {}
-        AutoMacroDB.default = {}
-        AutoMacroDB.default.macro = [[#showtooltip
-/use [@mouseover,exists][] <spell>]]
-        AutoMacroDB.default.mreplace = false
-        AutoMacroDB.default.general = false
-        -- End defaults
-        AutoMacroDB.macro = AutoMacroDB.macro or AutoMacroDB.default.macro
-        AutoMacroDB.mreplace = AutoMacroDB.mreplace or AutoMacroDB.default.mreplace
-        AutoMacroDB.general = AutoMacroDB.general or AutoMacroDB.default.general
+        setmetatable(AutoMacroDB, defaults)
         config.box.EditBox:SetText(AutoMacroDB.macro)
         config.mreplace:SetChecked(AutoMacroDB.mreplace)
         config.general:SetChecked(AutoMacroDB.general)
