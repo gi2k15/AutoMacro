@@ -18,6 +18,7 @@ config.main = CreateFrame("Frame", "AutoMacroConfigFrame", UIPanel, "BasicFrameT
 config.main:SetFrameStrata("DIALOG")
 config.main:SetSize(300,250)
 config.main:SetClampedToScreen(true)
+config.main:SetPoint("CENTER")
 MakeMovable(config.main)
 config.main.TitleText:SetText(L["AutoMacro configuration"])
 tinsert(UISpecialFrames, config.main:GetName())
