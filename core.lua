@@ -204,8 +204,8 @@ button:SetText("AutoMacro")
 button:SetSize(120,18)
 button:SetPoint("TOPRIGHT", SpellBookFrameCloseButton, "TOPLEFT", 4 , -6)
 button:SetScript("OnClick", function(self, but)
-    if (but == "LeftButton") then
-        if (not pressed) then
+    if but == "LeftButton" then
+        if not pressed then
             pressed = true
             button:LockHighlight()
             button:SetText("AutoMacro ON")
@@ -222,8 +222,12 @@ button:SetScript("OnClick", function(self, but)
                 frames[i]:Hide() 
             end
         end
-    elseif (but == "RightButton") then
-        config.main:Show()
+    elseif but == "RightButton" then
+        if IsShiftKeyDown() then
+            pcall(SlashCmdList["MACRO"])
+        else
+            config.main:Show()
+        end
     end
 end)
 button:SetScript("OnEnter", function(self)
