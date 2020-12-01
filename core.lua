@@ -252,3 +252,10 @@ SpellBookProfessionFrame:HookScript("OnHide", function()
         frames[i]:SetFrameStrata("HIGH")
     end
 end)
+
+-- Hides the frames when Spell Book is closed.
+SpellBookFrame:HookScript("OnHide", function()
+    for i = 1, 12 do
+        frames[i]:Hide()
+    end
+end)
