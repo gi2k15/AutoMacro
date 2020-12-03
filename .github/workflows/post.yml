@@ -25,11 +25,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Luacheck
-        run: |
-          sudo apt-get install luarocks
-          luarocks install --local luacheck
-          /home/runner/.luarocks/bin/luacheck . --no-color -q
       - name: Create Package
         run: curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
         env:
