@@ -14,7 +14,7 @@ end
 
 -- Config frame
 local config = {}
-config.main = CreateFrame("Frame", "AutoMacroConfigFrame", UIPanel, "BasicFrameTemplate")
+config.main = CreateFrame("Frame", "AutoMacroConfigFrame", UIParent, "BasicFrameTemplate")
 config.main:SetFrameStrata("DIALOG")
 config.main:SetSize(300,250)
 config.main:SetClampedToScreen(true)
@@ -22,6 +22,7 @@ config.main:SetPoint("CENTER")
 MakeMovable(config.main)
 config.main.TitleText:SetText(L["AutoMacro configuration"])
 tinsert(UISpecialFrames, config.main:GetName())
+config.main:SetScale(1.2)
 config.main:Hide()
 
 config.desc = config.main:CreateFontString("AutoMacroConfigDesc", "OVERLAY", "GameFontWhiteSmall")
@@ -34,7 +35,7 @@ config.mreplace = CreateFrame("CheckButton", "AutoMacroOverwriteMacro", config.m
 config.mreplace.text = _G[config.mreplace:GetName() .. "Text"]
 config.mreplace:SetPoint("TOPLEFT", config.desc, "BOTTOMLEFT", -5, -5)
 config.mreplace:SetSize(20,20)
-config.mreplace.text:SetText(L["Overwrite existing macro"])
+config.mreplace.text:SetText(" " .. L["Overwrite existing macro"])
 config.mreplace.text:SetFontObject(GameFontNormalSmall)
 config.mreplace.tooltip = L["Replace the existing macro with the one you just created."]
 config.mreplace:SetScript("OnClick", function(self)
@@ -45,7 +46,7 @@ config.general = CreateFrame("CheckButton", "AutoMacroGeneral", config.main, "UI
 config.general.text = _G[config.general:GetName() .. "Text"]
 config.general:SetPoint("TOPLEFT", config.mreplace, "BOTTOMLEFT")
 config.general:SetSize(20,20)
-config.general.text:SetText(L["Save macro in the General tab"])
+config.general.text:SetText(" " .. L["Save macro in the General tab"])
 config.general.text:SetFontObject(GameFontNormalSmall)
 config.general.tooltip = L["Save the macro in the General tab, making it available to other characters."]
 config.general:SetScript("OnClick", function(self)
