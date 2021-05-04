@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90005
 ## Title: AutoMacro
 ## Author: gi2k15
 ## Notes: Creates spell macros with a single click.
