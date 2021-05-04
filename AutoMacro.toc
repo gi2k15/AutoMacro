@@ -4,6 +4,7 @@
 ## Notes: Creates spell macros with a single click.
 ## Notes-ptBR: Cria macros de magia com apenas um clique.
 ## Notes-ruRU: Создает макросы заклинаний одним щелчком мыши.
+## Notes-koKR: 클릭 한 번으로 주문 매크로를 만듭니다.
 ## Version: @project-version@
 ## SavedVariables: AutoMacroDB
 ## OptionalDeps: Ace3
@@ -15,5 +16,6 @@ Libs\AceLocale-3.0\AceLocale-3.0.xml
 Locales\enUS.lua
 Locales\ptBR.lua
 Locales\ruRU.lua
+Locales\koKR.lua
 
 core.lua
