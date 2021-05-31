@@ -1,4 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("AutoMacro")
+local LCG = LibStub("LibCustomGlow-1.0")
 
 local frames = {}
 local pressed = false
@@ -212,14 +213,14 @@ button:SetScript("OnClick", function(self, but)
             button:SetText("AutoMacro ON")
             for i = 1, 12 do 
                 frames[i]:Show()
-                ActionButton_ShowOverlayGlow(frames[i])
+                LCG.ButtonGlow_Start(frames[i])
             end
             else
             pressed = false
             button:UnlockHighlight()
             button:SetText("AutoMacro")
             for i = 1, 12 do
-                ActionButton_HideOverlayGlow(frames[i])
+                LCG.ButtonGlow_Stop(frames[i])
                 frames[i]:Hide() 
             end
         end

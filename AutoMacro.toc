@@ -7,11 +7,12 @@
 ## Notes-koKR: 클릭 한 번으로 주문 매크로를 만듭니다.
 ## Version: @project-version@
 ## SavedVariables: AutoMacroDB
-## OptionalDeps: Ace3
+## OptionalDeps: Ace3, Lib: CustomGlow
 ## X-Curse-Project-ID: 100803
 
 Libs\LibStub\LibStub.lua
 Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\LibCustomGlow-1.0\LibCustomGlow-1.0.xml
 
 Locales\enUS.lua
 Locales\ptBR.lua
