@@ -17,14 +17,14 @@ end
 local config = {}
 config.main = CreateFrame("Frame", "AutoMacroConfigFrame", UIParent, "BasicFrameTemplate")
 config.main:SetFrameStrata("DIALOG")
-config.main:SetSize(300,300)
+config.main:SetSize(300,250)
 config.main:SetClampedToScreen(true)
 config.main:SetPoint("CENTER")
 MakeMovable(config.main)
 config.main.TitleText:SetText(L["AutoMacro configuration"])
 tinsert(UISpecialFrames, config.main:GetName())
 config.main:SetScale(1.2)
---config.main:Hide()
+config.main:Hide()
 
 config.desc = config.main:CreateFontString("AutoMacroConfigDesc", "OVERLAY", "GameFontWhiteSmall")
 config.desc:SetPoint("TOPLEFT", config.main, "TOPLEFT", 10, -30)
@@ -54,15 +54,9 @@ config.general:SetScript("OnClick", function(self)
     AutoMacroDB.general = self:GetChecked()
 end)
 
-config.mlist = CreateFrame("Frame", "AutoMacroList", config.main, "UIDropDownMenuTemplate")
-config.mlist:SetPoint("TOPLEFT", config.general, "BOTTOMLEFT", -15, -10)
-UIDropDownMenu_SetWidth(config.mlist, config.main:GetWidth() - 40)
---UIDropDownMenu_SetAnchor(config.mlist, 0, 0, "TOPLEFT", nil, "BOTTOMRIGHT")
---UIDropDownMenu_SetAnchor(config.mlist, 0, 0, "TOPLEFT", nil, "BOTTOMRIGHT")
-
 config.box = CreateFrame("ScrollFrame", "AutoMacroConfigEditBox", config.main, "InputScrollFrameTemplate")
-config.box:SetPoint("TOPLEFT", config.mlist, "BOTTOMLEFT", 23, -10)
-config.box:SetSize(config.main:GetWidth() - 35, config.main:GetHeight() - 200)
+config.box:SetPoint("TOPLEFT", config.general, "BOTTOMLEFT", 5, -10)
+config.box:SetSize(config.main:GetWidth() - 25, config.main:GetHeight() - 155)
 config.box.EditBox:SetMaxLetters(255)
 config.box.EditBox:SetSize(config.box:GetSize())
 config.box.EditBox:SetAllPoints()
@@ -101,10 +95,6 @@ config.main:SetScript("OnEvent", function(self, event, ...)
 /use [@mouseover,exists][] <spell>]],
                 mreplace = false,
                 general = false,
-                macros = {
-                    Default = [[#showtooltip
-/use [@mouseover,exists][] <spell>]],
-                }
             }
         }
         -- Defaults
@@ -112,16 +102,6 @@ config.main:SetScript("OnEvent", function(self, event, ...)
         config.box.EditBox:SetText(AutoMacroDB.macro)
         config.mreplace:SetChecked(AutoMacroDB.mreplace)
         config.general:SetChecked(AutoMacroDB.general)
-
-        -- Populates macro's list.
-        UIDropDownMenu_Initialize(config.mlist, function(self, level)
-            level = level or 1
-            local info = UIDropDownMenu_CreateInfo()
-            for k,v in pairs(AutoMacroDB.macros) do
-                info.text, info. value = k, v
-                UIDropDownMenu_AddButton(info, level)
-            end
-        end)
     end
 end)
 
@@ -217,7 +197,6 @@ SpellBookSkillLineTab3:HookScript("OnClick", ReopenFrames)
 SpellBookSkillLineTab4:HookScript("OnClick", ReopenFrames)
 SpellBookSkillLineTab5:HookScript("OnClick", ReopenFrames)
 SpellBookSkillLineTab6:HookScript("OnClick", ReopenFrames)
-
 
 -- ON/OFF Button
 local button = CreateFrame("Button", "AutoMacroButton", SpellBookFrame, "UIPanelButtonTemplate")
