@@ -57,6 +57,8 @@ end)
 config.mlist = CreateFrame("Frame", "AutoMacroList", config.main, "UIDropDownMenuTemplate")
 config.mlist:SetPoint("TOPLEFT", config.general, "BOTTOMLEFT", -15, -10)
 UIDropDownMenu_SetWidth(config.mlist, config.main:GetWidth() - 40)
+--UIDropDownMenu_SetAnchor(config.mlist, 0, 0, "TOPLEFT", nil, "BOTTOMRIGHT")
+--UIDropDownMenu_SetAnchor(config.mlist, 0, 0, "TOPLEFT", nil, "BOTTOMRIGHT")
 
 config.box = CreateFrame("ScrollFrame", "AutoMacroConfigEditBox", config.main, "InputScrollFrameTemplate")
 config.box:SetPoint("TOPLEFT", config.mlist, "BOTTOMLEFT", 23, -10)
@@ -98,7 +100,11 @@ config.main:SetScript("OnEvent", function(self, event, ...)
                 macro = [[#showtooltip
 /use [@mouseover,exists][] <spell>]],
                 mreplace = false,
-                general = false
+                general = false,
+                macros = {
+                    Default = [[#showtooltip
+/use [@mouseover,exists][] <spell>]],
+                }
             }
         }
         -- Defaults
@@ -106,6 +112,16 @@ config.main:SetScript("OnEvent", function(self, event, ...)
         config.box.EditBox:SetText(AutoMacroDB.macro)
         config.mreplace:SetChecked(AutoMacroDB.mreplace)
         config.general:SetChecked(AutoMacroDB.general)
+
+        -- Populates macro's list.
+        UIDropDownMenu_Initialize(config.mlist, function(self, level)
+            level = level or 1
+            local info = UIDropDownMenu_CreateInfo()
+            for k,v in pairs(AutoMacroDB.macros) do
+                info.text, info. value = k, v
+                UIDropDownMenu_AddButton(info, level)
+            end
+        end)
     end
 end)
 
