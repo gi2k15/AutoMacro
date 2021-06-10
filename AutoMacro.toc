@@ -1,14 +1,16 @@
 ## Interface: 90005
 ## Title: AutoMacro
-## Author: gi2k15
+## Author: Beviselynt
 ## Notes: Creates spell macros with a single click.
-## Notes-ptBR: Cria macros de magia com apenas um clique.
+## Notes-ptBR: Crie macros de magia com apenas um clique.
 ## Notes-ruRU: Создает макросы заклинаний одним щелчком мыши.
 ## Notes-koKR: 클릭 한 번으로 주문 매크로를 만듭니다.
 ## Version: @project-version@
 ## SavedVariables: AutoMacroDB
 ## OptionalDeps: Ace3, Lib: CustomGlow
 ## X-Curse-Project-ID: 100803
+## X-Wago-ID: pkNMORKz
+## X-WoWI-ID: 24021
 
 Libs\LibStub\LibStub.lua
 Libs\AceLocale-3.0\AceLocale-3.0.xml
